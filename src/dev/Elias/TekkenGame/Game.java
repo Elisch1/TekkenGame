@@ -20,6 +20,8 @@ public class Game implements Runnable{
 //	private BufferedImage testImage;
 //	private SpriteSheet sheet;
 	
+	private State gameState;
+	private State menuState;
 	
 	public Game(String title, int width, int height) {
 		this.width = width;
@@ -34,11 +36,14 @@ public class Game implements Runnable{
 		Assets.init();
 //		testImage = ImageLoader.loadImage("/textures/RedFighterStandSheet.png");
 //		sheet = new SpriteSheet(testImage);
-		
+		gameState = new GameState();
+		menuState = new MenuState();
+		State.setState(gameState);
 	}
-	int x = 0;
+	
 	private void tick() {
-		x += 1;
+	if(State.getState() != null)
+		State.getState().tick();
 		
 	}
 	
@@ -55,7 +60,8 @@ public class Game implements Runnable{
 		//g.drawImage(Assets.redStandOne, 10, 10, null);
 //		g.drawImage(sheet.crop(0, 0, 64, 83), 5, 5, null);
 		//g.drawImage(Assets.redStandOne, 10, 10, null);
-		g.drawImage(Assets.redStandOne, x, 10, null);
+		if(State.getState() != null)
+			State.getState().render(g);
 		
 		bs.show();
 		g.dispose();
