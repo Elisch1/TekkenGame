@@ -59,7 +59,7 @@ public class Game implements Runnable{
 		//RedFighterStandSheet horizontal = 69,00 vertical = 83,00
 		//g.drawImage(Assets.redStandOne, 10, 10, null);
 //		g.drawImage(sheet.crop(0, 0, 64, 83), 5, 5, null);
-		//g.drawImage(Assets.redStandOne, 10, 10, null);
+		g.drawImage(Assets.redStandOne, 10, 10, null);
 		if(State.getState() != null)
 			State.getState().render(g);
 		
